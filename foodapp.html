@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CRUNCH & SIP | snacks & drinks</title>
+  <!-- Google Fonts & Font Awesome for modern look -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600;14..32,700;14..32,800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #fdfaf6;
+      color: #1e1e1e;
+      line-height: 1.5;
+    }
+
+    /* modern gradient accent */
+    .gradient-text {
+      background: linear-gradient(135deg, #f97316, #e11d48);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* header / nav */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 0;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .logo i {
+      font-size: 30px;
+      color: #f97316;
+      background: #fff1e6;
+      padding: 8px;
+      border-radius: 16px;
+      box-shadow: 0 8px 18px -6px rgba(249, 115, 22, 0.3);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      font-weight: 500;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #2d2d2d;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: #f97316;
+    }
+
+    .cart-btn {
+      background: #1e1e1e;
+      color: white;
+      border: none;
+      padding: 10px 22px;
+      border-radius: 40px;
+      font-weight: 600;
+      font-size: 15px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      transition: all 0.2s;
+      box-shadow: 0 8px 18px -6px rgba(0, 0, 0, 0.2);
+    }
+
+    .cart-btn i {
+      font-size: 16px;
+    }
+
+    .cart-btn:hover {
+      background: #f97316;
+      transform: scale(1.02);
+    }
+
+    /* hero section */
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      padding: 40px 0 60px;
+      flex-wrap: wrap;
+    }
+
+    .hero-content {
+      flex: 1 1 400px;
+    }
+
+    .badge {
+      display: inline-block;
+      background: #fee2e2;
+      color: #b91c1c;
+      font-weight: 600;
+      font-size: 14px;
+      padding: 6px 16px;
+      border-radius: 40px;
+      margin-bottom: 20px;
+      letter-spacing: 0.3px;
+    }
+
+    .hero-content h1 {
+      font-size: 56px;
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -1.5px;
+      margin-bottom: 24px;
+    }
+
+    .hero-content p {
+      font-size: 18px;
+      color: #4b4b4b;
+      max-width: 480px;
+      margin-bottom: 32px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: #f97316;
+      color: white;
+      border: none;
+      padding: 16px 36px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+      box-shadow: 0 15px 30px -10px rgba(249, 115, 22, 0.5);
+      transition: all 0.2s;
+    }
+
+    .btn-primary i {
+      transition: transform 0.2s;
+    }
+
+    .btn-primary:hover {
+      background: #ea580c;
+      transform: translateY(-3px);
+    }
+
+    .btn-primary:hover i {
+      transform: translateX(5px);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid #1e1e1e;
+      color: #1e1e1e;
+      padding: 16px 32px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 16px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.2s;
+    }
+
+    .btn-outline:hover {
+      background: #1e1e1e;
+      color: white;
+    }
+
+    .hero-visual {
+      flex: 1 1 380px;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 360px;
+    }
+
+    .snack-circle {
+      position: relative;
+      width: 340px;
+      height: 340px;
+      background: radial-gradient(circle at 30% 30%, #fcd34d, #f59e0b);
+      border-radius: 50%;
+      box-shadow: 0 40px 60px -20px rgba(245, 158, 11, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .drink-glass {
+      width: 140px;
+      height: 220px;
+      background: linear-gradient(135deg, #fb923c, #ea580c);
+      border-radius: 0 0 60px 60px;
+      position: relative;
+      box-shadow: inset -10px -10px 20px rgba(0, 0, 0, 0.1), 0 25px 30px -10px #b45309;
+      transform: rotate(6deg);
+    }
+
+    .drink-glass::before {
+      content: "";
+      position: absolute;
+      top: -20px;
+      left: 0;
+      width: 140px;
+      height: 40px;
+      background: #ffedd5;
+      border-radius: 50%;
+      box-shadow: inset -5px -5px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .drink-glass::after {
+      content: "🍊";
+      position: absolute;
+      top: -48px;
+      left: 20px;
+      font-size: 60px;
+      filter: drop-shadow(0 10px 10px rgba(0,0,0,0.1));
+    }
+
+    .snack {
+      position: absolute;
+      font-size: 50px;
+      filter: drop-shadow(0 15px 15px rgba(0, 0, 0, 0.15));
+    }
+
+    .snack-1 {
+      top: 20px;
+      right: -10px;
+      transform: rotate(15deg);
+    }
+
+    .snack-2 {
+      bottom: 40px;
+      left: -20px;
+      transform: rotate(-10deg);
+      font-size: 60px;
+    }
+
+    .snack-3 {
+      bottom: -10px;
+      right: 20px;
+      transform: rotate(25deg);
+      font-size: 48px;
+    }
+
+    /* categories section */
+    .section-title {
+      font-size: 36px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 10px;
+    }
+
+    .section-sub {
+      color: #6b6b6b;
+      margin-bottom: 40px;
+      font-size: 17px;
+    }
+
+    .category-grid {
+      display: flex;
+      gap: 28px;
+      flex-wrap: wrap;
+      padding: 20px 0 60px;
+    }
+
+    .category-card {
+      background: white;
+      border-radius: 32px;
+      padding: 32px 28px;
+      flex: 1 1 200px;
+      box-shadow: 0 15px 30px -12px rgba(0, 0, 0, 0.08);
+      border: 1px solid #f0ebe4;
+      transition: all 0.25s;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .category-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 30px 40px -18px rgba(0, 0, 0, 0.15);
+      border-color: #f97316;
+    }
+
+    .category-icon {
+      font-size: 42px;
+      margin-bottom: 20px;
+      background: #fff7ed;
+      padding: 12px;
+      border-radius: 20px;
+      color: #f97316;
+    }
+
+    .category-card h3 {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .category-card p {
+      color: #6b6b6b;
+      font-size: 15px;
+      margin-bottom: 20px;
+      flex: 1;
+    }
+
+    .shop-link {
+      color: #f97316;
+      font-weight: 700;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: gap 0.2s;
+    }
+
+    .shop-link:hover {
+      gap: 12px;
+    }
+
+    /* featured products */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 28px;
+      padding: 20px 0 60px;
+    }
+
+    .product-card {
+      background: white;
+      border-radius: 28px;
+      padding: 24px;
+      box-shadow: 0 12px 28px -10px rgba(0, 0, 0, 0.05);
+      border: 1px solid #f1ede8;
+      transition: all 0.2s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .product-card:hover {
+      border-color: #f97316;
+      box-shadow: 0 25px 35px -14px rgba(249, 115, 22, 0.2);
+    }
+
+    .product-emoji {
+      font-size: 70px;
+      margin-bottom: 16px;
+      filter: drop-shadow(0 12px 12px rgba(0, 0, 0, 0.1));
+      transition: transform 0.2s;
+    }
+
+    .product-card:hover .product-emoji {
+      transform: scale(1.05) rotate(2deg);
+    }
+
+    .product-card h4 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .product-desc {
+      font-size: 14px;
+      color: #737373;
+      margin-bottom: 16px;
+    }
+
+    .price {
+      font-weight: 800;
+      font-size: 24px;
+      color: #f97316;
+      margin-bottom: 16px;
+    }
+
+    .add-btn {
+      background: #1e1e1e;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 40px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      width: 100%;
+      justify-content: center;
+      transition: background 0.2s;
+    }
+
+    .add-btn:hover {
+      background: #f97316;
+    }
+
+    /* real-time snack bar */
+    .realtime-bar {
+      background: #1e1e1e;
+      color: white;
+      border-radius: 80px;
+      padding: 18px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin: 40px 0 60px;
+      box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.2);
+    }
+
+    .live-badge {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #f97316;
+      padding: 8px 20px;
+      border-radius: 40px;
+      font-weight: 700;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .pulse {
+      width: 10px;
+      height: 10px;
+      background: white;
+      border-radius: 50%;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0% { opacity: 0.4; transform: scale(0.8); }
+      50% { opacity: 1; transform: scale(1.2); }
+      100% { opacity: 0.4; transform: scale(0.8); }
+    }
+
+    .stats {
+      display: flex;
+      gap: 36px;
+      font-weight: 600;
+      flex-wrap: wrap;
+    }
+
+    .stats span i {
+      color: #f97316;
+      margin-right: 6px;
+    }
+
+    /* footer */
+    .footer {
+      border-top: 1px solid #e7e1d9;
+      padding: 40px 0 24px;
+      margin-top: 20px;
+      text-align: center;
+      color: #6b6b6b;
+      font-size: 14px;
+    }
+
+    /* responsive */
+    @media (max-width: 768px) {
+      .hero-content h1 {
+        font-size: 42px;
+      }
+      .navbar {
+        flex-direction: column;
+        gap: 16px;
+      }
+      .nav-links {
+        gap: 20px;
+      }
+      .snack-circle {
+        width: 260px;
+        height: 260px;
+      }
+      .drink-glass {
+        width: 100px;
+        height: 160px;
+      }
+      .drink-glass::before {
+        width: 100px;
+      }
+      .realtime-bar {
+        border-radius: 30px;
+        justify-content: center;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- NAVBAR -->
+    <nav class="navbar">
+      <div class="logo">
+        <i class="fas fa-cookie-bite"></i>
+        <span>CRUNCH<span class="gradient-text">SIP</span></span>
+      </div>
+      <div class="nav-links">
+        <a href="#">Shop</a>
+        <a href="#">Snacks</a>
+        <a href="#">Drinks</a>
+        <a href="#">Deals</a>
+      </div>
+      <button class="cart-btn">
+        <i class="fas fa-shopping-cart"></i> Cart · <span id="cart-count">2</span>
+      </button>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-content">
+        <span class="badge"><i class="fas fa-bolt" style="margin-right: 6px;"></i>Real-time snack happiness</span>
+        <h1>Crunchy meets <br><span class="gradient-text">refreshing.</span></h1>
+        <p>Discover handpicked snacks & drinks delivered fresh in 30 minutes. Real-time stock, live updates, pure joy.</p>
+        <div class="hero-actions">
+          <button class="btn-primary">
+            Order now <i class="fas fa-arrow-right"></i>
+          </button>
+          <button class="btn-outline">
+            <i class="fas fa-play"></i> See menu
+          </button>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="snack-circle">
+          <div class="drink-glass"></div>
+          <div class="snack snack-1">🍿</div>
+          <div class="snack snack-2">🥨</div>
+          <div class="snack snack-3">🍫</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- categories -->
+    <div>
+      <h2 class="section-title">Pick your <span class="gradient-text">craving</span></h2>
+      <p class="section-sub">Real-time categories with live stock</p>
+      <div class="category-grid">
+        <div class="category-card">
+          <div class="category-icon"><i class="fas fa-cookie"></i></div>
+          <h3>Crunchy Snacks</h3>
+          <p>Chips, crackers, pretzels & more – always crispy.</p>
+          <a href="#" class="shop-link">Shop snacks <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="category-card">
+          <div class="category-icon"><i class="fas fa-wine-bottle"></i></div>
+          <h3>Cold Drinks</h3>
+          <p>Juices, sodas, iced teas – perfectly chilled.</p>
+          <a href="#" class="shop-link">Shop drinks <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="category-card">
+          <div class="category-icon"><i class="fas fa-candy-cane"></i></div>
+          <h3>Sweet Treats</h3>
+          <p>Chocolates, gummies, cookies to brighten up.</p>
+          <a href="#" class="shop-link">Shop sweets <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="category-card">
+          <div class="category-icon"><i class="fas fa-fire"></i></div>
+          <h3>Combo Deals</h3>
+          <p>Snack + drink bundles at unbeatable prices.</p>
+          <a href="#" class="shop-link">Explore combos <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- featured products -->
+    <div>
+      <h2 class="section-title">Trending <span class="gradient-text">right now</span></h2>
+      <p class="section-sub">Real-time bestsellers — updated live</p>
+      <div class="product-grid">
+        <div class="product-card">
+          <div class="product-emoji">🍿</div>
+          <h4>Sea Salt Popcorn</h4>
+          <p class="product-desc">Light, airy & perfectly salted</p>
+          <div class="price">$4.99</div>
+          <button class="add-btn"><i class="fas fa-plus"></i> Add to cart</button>
+        </div>
+        <div class="product-card">
+          <div class="product-emoji">🍊</div>
+          <h4>Sparkling Orange</h4>
+          <p class="product-desc">Real fruit, zero sugar</p>
+          <div class="price">$3.49</div>
+          <button class="add-btn"><i class="fas fa-plus"></i> Add to cart</button>
+        </div>
+        <div class="product-card">
+          <div class="product-emoji">🥨</div>
+          <h4>Pretzel Twists</h4>
+          <p class="product-desc">Oven-baked, extra crunchy</p>
+          <div class="price">$5.25</div>
+          <button class="add-btn"><i class="fas fa-plus"></i> Add to cart</button>
+        </div>
+        <div class="product-card">
+          <div class="product-emoji">🍫</div>
+          <h4>Dark Choco Bites</h4>
+          <p class="product-desc">70% cocoa, rich & smooth</p>
+          <div class="price">$6.99</div>
+          <button class="add-btn"><i class="fas fa-plus"></i> Add to cart</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- realtime bar -->
+    <div class="realtime-bar">
+      <div class="live-badge">
+        <span class="pulse"></span> LIVE
+      </div>
+      <div class="stats">
+        <span><i class="fas fa-bolt"></i> 1,243 orders today</span>
+        <span><i class="fas fa-truck-fast"></i> 28 min avg delivery</span>
+        <span><i class="fas fa-star"></i> 4.9 (2.1k reviews)</span>
+      </div>
+      <div>
+        <i class="fas fa-clock" style="color: #f97316;"></i> updated just now
+      </div>
+    </div>
+
+    <!-- footer -->
+    <footer class="footer">
+      <p>© 2025 Crunch&Sip — real-time snacks & drinks. All rights reserved.</p>
+      <p style="margin-top: 10px; font-size: 13px;">🍪 Crafted with crunch & love 🥤</p>
+    </footer>
+  </div>
+
+  <!-- tiny real-time cart counter simulation (static but adds liveliness) -->
+  <script>
+    (function() {
+      let count = 2;
+      const cartSpan = document.getElementById('cart-count');
+      const addButtons = document.querySelectorAll('.add-btn');
+      addButtons.forEach(btn => {
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          count++;
+          cartSpan.textContent = count;
+          // subtle feedback
+          btn.innerHTML = '<i class="fas fa-check"></i> Added';
+          setTimeout(() => {
+            btn.innerHTML = '<i class="fas fa-plus"></i> Add to cart';
+          }, 1000);
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
